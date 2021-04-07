@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cube Collector</title>
+		<link rel="icon" href="sprites/cube16x16temp.ico">
+		<meta property="og:locale" content="en_US">
+		<meta property="og:title" content="Cube Collector - Patch 1-12-20">
+		<meta property="og:type" content="website">
+		<meta property="og:keywords" content="Cube Collector, cubecollector">
+		<meta property="og:description" content="Free to play game similar to bnned's case clicker, all about collecting cubes, gambling them away, and getting more of them!">
+		<meta property="og:url" content="https://aspectquote.github.io/cubecollector">
+		<meta property="og:site_name" content="Cube Collector">
+		<meta property="og:image" content="https://aspectquote.github.io/cubecollector/sprites/aspectscubelarge.png">
+		<meta property="og:image:alt" content="Aspect's Cube">
+		<meta property="og:image:type" content="image/jpeg">
+		<meta property="og:image:width" content="256">
+		<meta property="og:image:height" content="256">
+		<meta name="msapplication-TileColor" content="#000">
+		<meta name="theme-color" content="#000">
+	</head>
+	<body>
+		<div class="topbarcontainer" style="align-items: center; display: flex;">
+			<div id="topbar" style="top:0; bottom:0;">
+				<div id="navwrapper">
+					<div class="navbaritems" id="homelink" style="margin-left: 10px;">Home</div>
+					<div class="navbaritems" id="caselink">Boxes</div>
+					<div class="navbaritems" id="tradeuplink">Trade Up</div>
+					<div class="navbaritems" id="questslink">Quests</div>
+					<div class="navbaritems" id="jplink">Jackpot</div>
+					<div class="navbaritems" id="coinfliplink">Coinflip</div>
+					<div class="navbaritems" id="skillpointslink">Skills</div>
+					<div class="navbaritems" id="cubepedialink">Cubepedia</div>
+					<div class="navbaritems" id="achievementslink">Achievements</div>
+					<div class="navbaritems" id="settingslink">Settings</div>
+				</div>
+			</div>
+			<div id="topbarprofilewrapper" style="height: 85%;">
+					<div id="topbarprofilemain" style="display: flex; vertical-align: middle;">
+						<div id="topbarlevel" style=" width: 26px; height: 26px; position: relative;">
+							<div id="playerlevel" style="font-size: small; height: 16px; width: 50%; position: absolute; margin-top: 15%; margin-left: 30%;">1</div>
+							<img id="topbarlevelicon" src="sprites/levelicons/level1.png" style="width: 26px; height: 26px;"/>
+						</div>
+						<div id="topbarprofilextras">
+							<div id="topbarusername" style="font-size: small;">Username</div>
+							<div id="moneyamount" style="font-size: x-small;">Money</div>
+						</div>
+						<div id="topbarpfp">
+							<img id="profilepicture" src="sprites/dice.png" style="border: 2px solid #AD5A00; border-radius: 50%; height: 32px; margin-left: 5px; cursor: pointer;">
+						</div>
+					</div>
+				</div>
+		</div>
+	<div id="app" style="position:relative;">
+		<div id="unboxingwrapper" style='position: relative;'>
+			<div class="boxcontainer">
+				<div class="boxesfooter">
+					<div class="lastunbox">
+						<div id="lastunboxingwrapper">
+							<div id="casename">
+								CaseName
+							</div>
+							<img id="lastunboxicon" src="sprites/cube16x16temp.png" />
+							<div id="lastunboxname">
+								Last unbox name
+							</div>
+							<div id="lastunboxflavortext">
+								Last unbox description
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="unboxingcontainer">
+				<div class="unboxingfooter">
+					<div class="casereel">
+						<div id="reelcontainer">
+							<div id="entrycontainer">
+								<div id="entries">
+									<div class="entries" id="entry1"></div>
+									<div class="entries" id="entry2"></div>
+									<div class="entries" id="entry3"></div>
+									<div class="entries" id="entry4"></div>
+									<div class="entries" id="entry5"></div>
+									<div class="entries" id="entry6"></div>
+									<div class="entries" id="entry7"></div>
+								</div>
+								<div id="reeltick"></div>
+							</div>
+						</div>
+					</div>
+					<div id="casebuttonswrapper">
+						<div id="caseopenbuttonwrapper">
+							<div class="casebuttons" id="caseopenbutton">
+								OPEN BOX
+							</div>
+						</div>
+						<div id="casebuybuttonwrapper">
+							<div class="casebuttons" id="casebuybutton">
+								BUY BOX
+							</div>
+						</div>
+					</div>
+					<div id="boxes">
+					</div>
+				</div>
+			</div>
+			<div id='cubeinspectoverlay' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; color: white; background-color: rgba(31, 31, 31, 0.8)'>
+				<div id='cubeinspectionwrapper' style='position: relative; height: 100%;'>
+					<div id="cubeinspectionname" style='text-align: center; padding-top: 5%; padding-bottom: 1%; font-size: 20px;'>Name</div>
+					<div id="cubeinspectionimg" style='text-align: center; padding-bottom: 3%; height: 15%;'><img src='sprites/unknown.png' style='height: 100%;' /></div>
+					<div id="cubeinspectiondescription" style='text-align: center; padding-bottom: 1%; font-size: 13px; padding-left: 33%; padding-right: 33%;'>Description</div>
+					<div id="cubeinspectionprice" style='text-align: center; padding-bottom: 5%; height: 2%; font-size: 15px;'>Price</div>
+					<div style='text-align: center;'><div id="cubeinspectionsellbutton" style='display: inline-block; width: auto; padding-top: 5px; padding-bottom: 5px; padding-left: 40px; padding-right: 40px; background-color: #8B0000; color: #490000; border: 2px solid #490000; border-radius: 5px; cursor: pointer;'>Sell?</div></div>
+					<div id='cubeinspectclosebutton' style='position: absolute; top: 0; right: 0; padding: 10px; font-size: 18px; cursor: pointer;'>x</div>
+				</div>
+			</div>
+		</div>
+		<div id="homewrapper"  style="background-image: url('sprites/background-test.png');">
+			<div id="homeheader" style="width: 100%; text-align: center; padding: 10px; font-size: x-large; color: orange;"></div>
+			<div id="homemain" style="width: 60%; text-align: left; padding-left: 5%; padding-right: 5%; height: 80%; border-radius: 25px 25px 0% 0%; background-color: #1C1C1C; position: absolute; bottom: 0;">
+				<div id="announcements">
+					<h1>Patch 12-1-20</h1>
+					<div class="homeheader">How to play</div>
+					<div class="homedata">You can open boxes, and get cubes. Each cube has its own rarity (and price!) and each box has its own cubes. When you get a cube, you may click on it to inspect it, and if you double click on it, you can sell it.</div>
+					<div class="homeheader">New Box, and Cube Collector Online Confirmed!</div>
+					<div class="homedata">Been a while, huh? Well, Aspect has confirmed that Cube Collector will be getting an online sequel at some point along with this update.</div>
+					<div class="homeheader">Discord</div>
+					<div class="homedata">Join the site's discord in order to participate in events like creating your own cubes for the site, and discussing/suggesting features for the site! You may also report bugs to me on the discord; just ping @AspectQuote (Feel free to invite your friends too!) You can join the discord here: <a href="https://discordapp.com/invite/C3U8scK" target="_blank">discord</a></div>
+					<div class="homeheader">Cookies</div>
+					<div class="homedata">This site uses cookies to store user data, none of it is sold or used outside of cube collector. By playing cube collector, you agree to these cookies being used.</div>
+				</div>
+			</div>
+		</div>
+		<div id="achievementwrapper">
+			<div id="achievementsheader" style="text-align: center; font-size: large; font-style: bold; padding-bottom: 20px; padding-top: 20px; border-bottom: 2px solid black; position: relative;">Achievements<div id="achievementcount" style="position: absolute; bottom: 0px; right: 0px; margin-bottom: 3px; margin-right: 3px; font-size: small;">0/30 (0%)</div></div>
+			<div id="achievementsmain" style="display: flex; flex-wrap: wrap;"></div>
+		</div>
+		<div id="tradeupswrapper">
+			<div id="tradeupsheader"style="text-align: center;">
+				<div id="tradeupstitle" style="font-size: x-large; font-style: bold; padding-top: 20px; padding-bottom: 5px;">
+					Trade Up!
+				</div>
+				<div id="tradeupspropaganda" style="font-size: x-small; font-style: italic; padding-bottom: 30px;">
+					Trade ups propaganda
+				</div>
+			</div>
+			<div id="tradeupsmain">
+				<div id="tradeupsitemcounter">
+					<div id="itemsintradeupcount" style="display: inline-block; font-size: x-small; ">
+						Enter items: 0
+					</div>
+					<div id="itemsintradeupmax" style="display: inline-block; font-size: x-small; ">
+				  /10
+					</div>
+				</div>
+				<div id="tradeupuiwrapper">
+				<div id="tradeupinputwrapper" style="">
+				<div id="tradeupinput1" style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+					<div id="tradeupslot0" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg0" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo0" class="tradeupslotinfos"></div>
+					</div>
+					<div id="tradeupslot1" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg1" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo1" class="tradeupslotinfos"></div>
+					</div>
+					<div id="tradeupslot2" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg2" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo2" class="tradeupslotinfos"></div>
+					</div>
+					<div id="tradeupslot3" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg3" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo3" class="tradeupslotinfos"></div>
+					</div>
+					<div id="tradeupslot4" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg4" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo4" class="tradeupslotinfos"></div>
+					</div>
+					<div id="tradeupslot5" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg5" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo5" class="tradeupslotinfos"></div>
+					</div>
+					<div id="tradeupslot6" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg6" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo6" class="tradeupslotinfos"></div>
+					</div>
+					<div id="tradeupslot7" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg7" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo7" class="tradeupslotinfos"></div>
+					</div>
+					<div id="tradeupslot8" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg8" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo8" class="tradeupslotinfos"></div>
+					</div>
+					<div id="tradeupslot9" class="tradeupslots">
+						<img src="sprites/cube16x16temp.png" id="tradeupslotimg9" class="tradeupslotimages" style="width: 100%; height: 100%" />
+						<div id="tradeupslotinfo9" class="tradeupslotinfos"></div>
+					</div>
+				</div>
+			</div>
+			<div id="tradeupfooter" style="text-align: center; padding-top: 30px;">
+				<div style="width: auto; position: relative; text-align: center;">
+					<div id="tradeupconfirmbutton" style="transition: 1s; width: auto; display: inline-block; padding: 10px;">
+						Confirm Trade Up?
+					</div>
+				</div>
+				<div id="tradeupoutputwrapper" style="margin-bottom: 20px;">
+					<div id="tradeupoutput" class="tradeupslots" style="margin-top: 30px; position: relative;">
+						<div id="tradeupslotoutputinfo" class="tradeupslotinfos"></div>
+						<img src="sprites/cube16x16temp.png" id="tradeupoutputimg" class="tradeupslotimages" style="width: 100%; height: 100%" />
+					</div>
+				</div>
+				<div id="tradeupchanceswrapper" style="font-size: small; color: white; text-align: left;">
+					<div id="chancesforyourtradeup">Chances for your trade up:</div>
+					<div id="tradeupchances" style='overflow-y: scroll;'>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		</div>
+		<div id="coinflipwrapper">
+			<div id="coinflipheader" style="font-size: large; padding-top: 2.5%; padding-bottom: 2.5%; border-bottom: 1px solid black; text-align: center; height: 2%;">Coinflips<div id="coinflipscount" style='font-size: x-small; color: light_grey;'>0/6 coinflips up</div></div>
+			<div id="coinflipbody" style='height: 80%; overflow: scroll; position: relative;'>
+				<div id="cfdisplays"></div>
+				<div id='createcfcontainer' style='position: absolute; width: 100%;'>
+					<div id='createcfheader' style="text-align: center; padding-top: 3%; padding-bottom: 5%; height: 7%; position: relative;">
+						Create Coinflip
+						<div id="cfoverlayclosebutton" style='position: absolute; top: 0; right: 0; color: #1C1C1C; cursor: pointer;'>x</div>
+					</div>
+					<div id='createcfitemsdisplay' style='height: 32px; width: 100%; padding-top: 5px; padding-bottom: 5px; border-top: 1px solid black; border-bottom: 1px solid black;'>
+
+					</div>
+					<div id='createcfitemvalue' style='text-align: right; font-size: x-small; color: #1C1C1C; font-style: italic; margin-right: 3px;'>
+						0$
+					</div>
+					<div id='createcfchooseside' style='font-style: italics; text-align: middle; border-top: 1px solid #292929; padding-top: 1.5%; padding-bottom: 1.5%;'>
+						<div style='width: 100%; text-align: center;'>Choose Side</div>
+						<div id='cfshoosesidecontainer' style='display: flex; width: 100%; justify-content: space-around; padding-bottom: 1.5%; height: 10%;'>
+							<div id='createcfchooseedgeside' style='height: 100%; text-align: center; cursor: pointer;'><img id='edgesideselection' src='sprites/coinflip/edgeside.png' style='height: 96px; width: 96px;' /><br/><span style='color: #CD38B6; font-size: small;'>EDGE SIDE</span></div>
+							<div id='createcfchoosefaceside' style='height: 100%; text-align: center; cursor: pointer;'><img id='facesideselection'src='sprites/coinflip/faceside.png' style='height: 96px; width: 96px;' /><br/><span style='color: #389ACD; font-size: small;'>FACE SIDE</span></div>
+						</div>
+					</div>
+					<div id='completecfoverlaybuttoncontainer' style='width: 100%; text-align: center; display: flex; justify-pcontent: space-around;'>
+						<div id='completecfoverlaybutton' style='background-image: linear-gradient(45deg, #389ACD, #CD38B6); border-radius: 4px; border: 1px solid #6648b1; text-align: center; padding: 10px; width: 80px; cursor: pointer;'>Confirm?</div>
+					</div>
+					<br/><div id='targetcfbetdisplay' style='margin-top: 30px; font-style: italic; text-align: center;'>$0 - $0</div>
+				</div>
+			</div>
+			<div id="cffooter" style='height: 5%; padding-top: 1.5%; padding-bottom: 1.5%; text-align: center; border-radius: 4px;'>
+				<div id='createcfbutton' style='padding: 15px; width: auto; background-image: linear-gradient(45deg, #389ACD, #CD38B6); text-align: center; display: inline-block; border-radius: 3px; cursor: pointer;'>Create Coinflip</div>
+			</div>
+		</div>
+		<div id="skillpointswrapper">
+			<div id='skillpointsheader' style='font-size: x-large; font-weight: bold; padding-top: 20px; text-align: center;'>Skill Upgrades</div>
+			<div id='skillpointsheadersubtext' style='font-size: x-small; padding-bottom: 30px; border-bottom: 1px solid black; text-align: center;'>0 Skill Points To Spend</div>
+			<div id='skillpointsmain' style='height: 90%;'></div>
+		</div>
+		<div id="cubepediawrapper">
+			<div id="cubepediaheader" style='font-size: large; font-weight: bold; padding-top: 1%; padding-bottom: 1%; text-align: center; height: 6.7%; border-bottom: 1px solid black;'>
+				Cubepedia
+				<div id="cubepediaheadersubtext" style='font-size: x-small; font-style: italics; text-align: center;'>0/0 cubes found (0%)</div>
+			</div>
+			<div id="cubepediamain" style='height: 90%; position: relative;'>
+				<div id="cubepediacubeswrapper" style="height: 100%; text-align: center; overflow-y: scroll; overflow-x: hidden;">
+					<div id="cubepediacubes" style='overflow-y: scroll; overflow-x: hidden; margin: 0; padding: 0;'>Cubepedia Cubes</div>
+				</div>
+				<div id="cubepediaoverlay" style='height: 100%; position: absolute; top: 0; left: 0; width: 100%; background-color: rgba(25, 25, 25, 0.8); z-index: 10;'>
+					<div id='cubepediaoverlayheader' style='padding: 20px; text-align: center; position: relative;'>
+						<div id='cubepediaoverlayname'>Name</div>
+						<div id='cubepediaoverlayclosebutton' style='position: absolute; top: 5px; right: 10px; cursor: pointer;'>x</div>
+					</div>
+					<div id='cubepediaoverlayimage' style='padding-bottom: 30px; text-align: center;'><img src='sprites/unknown.png' style='width: 100px; height: 100px; filter: grayscale(100%)'/></div>
+					<div id='cubepediaoverlaystats'>
+						<div id='cubepediaoverlaybox' style='padding-left: 20px; padding-bottom: 5px; font-size: small;'><img src='sprites/cubepediaicons/boxicon.png' style='height: 16px; display: inline; padding-right: 5px;' />Box</div>
+						<div id='cubepediaoverlayprice' style='padding-left: 20px; padding-bottom: 5px; font-size: small;'><img src='sprites/cubepediaicons/priceicon.png' style='height: 16px; display: inline; padding-right: 5px;' />Price</div>
+						<div id='cubepediaoverlayrarity' style='padding-left: 20px; padding-bottom: 5px; font-size: small;'><img src='sprites/cubepediaicons/rarityicon.png' style='height: 16px; display: inline; padding-right: 5px;' />Rarity</div>
+						<div id='cubepediaoverlaydescription' style='padding-left: 20px; padding-bottom: 5px; font-size: small;'><img src='sprites/cubepediaicons/descicon.png' style='height: 16px; display: inline; padding-right: 5px;' />Description</div>
+						<div id='cubepediaoverlayobtainability' style='padding-left: 20px; font-size: small;'>Obtainable by</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="questswrapper">
+			<div id="questsheader" style="font-size: large; padding-top: 20px; padding-bottom: 20px; margin-bottom: 5px; text-align: center; border-bottom: 1px solid black;">Quest Board</div>
+			<div id="questsmain" style='display: flex; flex-wrap: wrap; height: 70%;'></div>
+		</div>
+		<div id="settingswrapper">
+			<div id="settingsheader" style="text-align: center; font-size: x-large; padding-top: 20px; padding-bottom: 30px;">Settings</div>
+			<div id="usernamesetting" class="settingsoptions">
+				<div>
+					<label for="usernameinput">Change Username:</label>
+					<input type="text" id="usernameinput" placeholder="press ENTER to confirm"><br/>
+				</div>
+				<div id="currentusername" style="float: right;">Username: </div>
+			</div>
+			<div id="sellbelowsetting" class="settingsoptions">
+				<div>
+					<label for="sellbelowinput">Sell Below Price:</label>
+					<input type="text" id="sellbelowinput" placeholder="enter price in cents" title="press ENTER to confirm">
+				</div>
+			</div>
+			<div id="pfpsetting" class="settingsoptions">
+				<div>
+					<label for="pfpinput">Profile Picture:</label>
+					<input type="text" id="pfpinput" placeholder="link or path to an image" title="press ENTER to confirm">
+				</div>
+			</div>
+		</div>
+		<div id="jpwrapper">
+			<div class="jpwinnercontainer">
+				<div class="jpfooter">
+					<div class="lastjpwinner">
+						<div id="lastjpwinnerwrapper">
+							<div id="jpname" class="jpheaderstuff">
+								<h4>Jackpot</h4>
+							</div>
+							<div id="lastjpwinnerinfotext" class="jpheaderstuff">
+								Won with X$ with X%, on ticket X
+							</div>
+							<div id="jpinfotext" class="jpheaderstuff">
+								Pot Value: $0
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="jpcontainer">
+				<div class="jpfooter">
+					<div class="jpreel">
+						<div id="reelcontainer">
+							<div id="jpentrycontainer">
+								<div id="jpentries" style="height: 50px;">
+								</div>
+								<div id="reeltick"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="jpentriesindividualwrapper" style="overflow: scroll;">
+					<div id="individualjpentries">
+						Individualjpentries
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="profilewrapper" style="width: 70%; height: 100%; position: relative;">
+			<div id="profileheader" style="text-align: center; margin-top: 30px; font-size: x-large; color: white;">
+				<div style="text-align: center;" id="profileusername">Username</div>
+				<div style="text-align: center; font-size: small;" id="profilelevel">level 0</div>
+				<div style="text-align: center; margin-top: 30px;"><img id="profileprofilepicture" src="sprites/dice.png"  style="width: 128px; height: 128px; border-radius: 50%; border: 3px solid #904B00;"/></div>
+				<div id="profileexpbar" style="margin-top: 20px; margin-left: 2.5%; margin-right: 2.5%; width: 95%; height: 20px; border: 3px solid #191919; background-color: #3B3B3B; border-radius: 9px;">
+					<div id="profileexpcounter" style="width: 10%; height: 100%; padding: 0px; margin: 0px; text-align: center; font-size: x-small; background-color: #00408C; color: white; border-radius: 7px; transition: 1s; overflow: hidden;">
+						1/10
+					</div>
+				</div>
+			</div>
+			<div id='profileshowcasewrapper' style='margin-left: 1%;'>
+				<div id='profileshowcaseheader' style='font-size: 10px; font-style: italics; color: #101010;'>Showcase</div>
+				<div id='profileshowcasemain' style='border-bottom: 1px solid black; padding-bottom: 10px; margin-bottom: 3px; display: flex; justify-content: space-around;'>
+					<div class='profileshowcaseitems' id='profileshowcase0'><img id='profileshowcaseicon0' src='sprites/unknown.png' style='height: 90px; width: 90px;' /><div id='profileshowcasename0' style='position: absolute; bottom: 2px; left: 2px; font-size: 11px; color: white;'>name</div></div>
+					<div class='profileshowcaseitems' id='profileshowcase1'><img id='profileshowcaseicon1' src='sprites/unknown.png' style='height: 90px; width: 90px;' /><div id='profileshowcasename1' style='position: absolute; bottom: 2px; left: 2px; font-size: 11px; color: white;'>name</div></div>
+					<div class='profileshowcaseitems' id='profileshowcase2'><img id='profileshowcaseicon2' src='sprites/unknown.png' style='height: 90px; width: 90px;' /><div id='profileshowcasename2' style='position: absolute; bottom: 2px; left: 2px; font-size: 11px; color: white;'>name</div></div>
+					<div class='profileshowcaseitems' id='profileshowcase3'><img id='profileshowcaseicon3' src='sprites/unknown.png' style='height: 90px; width: 90px;' /><div id='profileshowcasename3' style='position: absolute; bottom: 2px; left: 2px; font-size: 11px; color: white;'>name</div></div>
+					<div class='profileshowcaseitems' id='profileshowcase4'><img id='profileshowcaseicon4' src='sprites/unknown.png' style='height: 90px; width: 90px;' /><div id='profileshowcasename4' style='position: absolute; bottom: 2px; left: 2px; font-size: 11px; color: white;'>name</div></div>
+					<div class='profileshowcaseitems' id='profileshowcase5'><img id='profileshowcaseicon5' src='sprites/unknown.png' style='height: 90px; width: 90px;' /><div id='profileshowcasename5' style='position: absolute; bottom: 2px; left: 2px; font-size: 11px; color: white;'>name</div></div>
+				</div>
+				<div id='profileshowcasefooter' style='font-size: 10px; font-style: italics; text-align: right; color: #101010;'>Showcase Footer</div>
+			</div>
+			<div id="profilemain" style="margin-left: 1%; margin-right: 1%; margin-top: 20px; width: 98%; border: 2px solid #191919; border-radius: 4px; color: white;">
+				<div id="profilestatsheader" style="padding-left: 3px; padding-top: 3px;">
+					Stats
+				</div>
+				<div id="profilestatsmain">
+
+				</div>
+			</div>
+			<div id="resetsavebutton" style="position: absolute; right: 0; bottom: 0; margin-right: 5px; margin-bottom: 5px; background-color: #841313; border: 1px solid #5E0E0E; border-radius: 3px; padding: 5px; color: #5E0E0E; cursor: pointer;">Double Click To Reset Save Game</div>
+		</div>
+		<div class="inventorycontainer">
+			<div class="inventoryheader">
+				<div class="inventoryheaderitems" id="inventoryvalue" style=" padding-left: 5px; line-height: 3;">
+					InventoryValue
+				</div>
+				<div class="inventoryheaderitems" id="inventoryselling" style="line-height: 3;">
+					Sell Below $1.00
+				</div>
+				<div class="inventoryheaderitems" id="inventorysorting" style="text-align: center;">Sort inventory:
+					<div style="display: flex;">
+						<div class="inventoryslotitems" id="inventorysorthl" title="sort your inventory from high to low, with high on top, and low on the bottom">High-Low</div>
+						 | | |
+						<div class="inventoryslotitems" id="inventorysortlh" title="sort your inventory from low to high, with low on top, and high on the bottom">Low-High</div>
+					</div>
+				</div>
+				<div class="inventoryheaderitems" id="inventoryslotsfilledcount" style="line-height: 3; padding-right: 5px;">
+					<div class="inventoryslotitems" id="inventoryslotsfilled">0</div>
+					<div class="inventoryslotitems" id="inventoryslotsmax">/200</div>
+				</div>
+			</div>
+			<div class="inventorymain">
+				<div id="inventory" style="">
+					Inventory
+				</div>
+			</div>
+			<div class="inventoryfooter">
+				<div id="getmoneybutton" style="text-align: center; width: 100%; height: 100%;">
+					<img src='sprites/clickmoneyleft.png' style='float: left; height: 100%; width: 10%;'/>
+					<img src='sprites/clickmoneyconnector.png' style='float: left; height: 100%; width: 32.5%'/>
+					<img src='sprites/clickmoney.png' style='float: left; height: 100%; width: 15%;'/>
+					<img src='sprites/clickmoneyconnector.png' style='float: left; height: 100%; width: 32.5%'/>
+					<img src='sprites/clickmoneyright.png' style='float: left; height: 100%; width: 10%;'/>
+				</div>
+			</div>
+		</div>
+		<div id='loadingscreen' style='position: absolute; background-color: #343434; width: 100%; height: 100%; z-index: 1000000000;'>
+			<!-- Loading square from the squar.red network, codepen at https://codepen.io/tashfene/pen/raEqrJ -->
+			<div style='height: 15%; text-align: center;'><span class="loader"><span class="loader-inner"></span></span></div>
+			<div id="loadingflavortext" style="text-align: center; color: white;">LOADING...</div>
+		</div>
+		</div>
+	</body>
+	<div style="position: absolute; bottom: 0; left: 0; width: 25%; overflow: hidden; z-index: 1000;" id="usermessages"></div>
+</html>
+<link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet">
+<link rel=stylesheet type=text/css href=styles/styles.css>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="scripts/user.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/cubeconstructor.js"></script>
+<script src="scripts/boxconstructor.js"></script>
+<script src="scripts/prefixconstructor.js"></script>
+<script src="scripts/casereel.js"></script>
+<script src="scripts/tabs.js"></script>
+<script src="scripts/bots.js"></script>
+<script src="scripts/jackpot.js"></script>
+<script src="scripts/settings.js"></script>
+<script src="scripts/tradeups.js"></script>
+<script src="scripts/achievements.js"></script>
+<script src="scripts/levelsandprofile.js"></script>
+<script src="scripts/quests.js"></script>
+<script src="scripts/coinflip.js"></script>
+<script src="scripts/skillpoints.js"></script>
+<script src="scripts/cubepedia.js"></script>
+<script src="scripts/finishers.js"></script>
+<link rel=stylesheet type=text/css href=styles/styles.css>

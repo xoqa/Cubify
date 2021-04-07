@@ -1,0 +1,641 @@
+@font-face {
+  font-family: karma-future;
+  src: url(../fonts/karma-suture.woff);
+}
+* {
+font-family: karma-future;
+image-rendering: pixelated;
+user-select: none;
+}
+html,body {
+height: 100%;
+margin: 0;
+background-color: #303036;
+}
+#app {
+display: flex;
+height: 95%;
+}
+#unboxingwrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+}
+#homewrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+color: white;
+}
+#achievementwrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+color: white;
+}
+#jpwrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+color: white;
+}
+#cubepediawrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+color: white;
+}
+#skillpointswrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+color: white;
+}
+#coinflipwrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+color: white;
+}
+#questswrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+color: white;
+}
+#settingswrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+color: white;
+}
+#tradeupswrapper {
+width: 70%;
+height: 100%;
+background-color: #303036;
+color: white;
+}
+.topbarcontainer {
+  height: 5%;
+  background-color: black;
+}
+#topbar {
+width:100%;
+}
+#homelink {
+padding-left: 5px;
+}
+#navwrapper {
+display: flex;
+height: 5%;
+}
+.navbaritems {
+display: inline-block;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-right: 20px;
+transition: 0.4s;
+color: white;
+}
+.navbaritems:hover {
+text-shadow: 1px 1px 10px #FCA17D, -1px -1px 10px #FCA17D, 1px 1px 10px #FCA17D, -1px -1px 10px #FCA17D;
+cursor: pointer;
+}
+#reelcontainer {
+background-color:#303036;
+padding-top: 10px;
+padding-bottom: 10px;
+overflow: hidden;
+}
+#entrycontainer {
+background-image: linear-gradient(45deg, rgba(35, 35, 31, 0.3), rgba(35, 35, 31, 0.8));
+border: 1px solid #050401;
+position: relative;
+transition: 0.75s;
+}
+#jpentrycontainer {
+background-image: linear-gradient(45deg, rgba(35, 35, 31, 0.3), rgba(35, 35, 31, 0.8));
+border: 1px solid #050401;
+position: relative;
+transition: 0.75s;
+}
+#jpentries {
+display: flex;
+flex-wrap:nowrap;
+padding-top: 5px;
+padding-bottom: 5px;
+position: relative;
+vertical-align: baseline;
+transition: transform 6s;
+transition-timing-function: cubic-bezier(.31,.9985,.31,.9985); /* Special thanks to @banned#7691 for helping with the points on the bezier curve! */
+width: 100%;
+min-width: 100%;
+}
+#entries {
+display: flex;
+flex-wrap:nowrap;
+padding-top: 5px;
+padding-bottom: 5px;
+position: relative;
+vertical-align: baseline;
+transition: transform 6s;
+/*transition-timing-function: cubic-bezier(.31,.9985,.31,.9985); /* Special thanks to @banned#7691 for helping with the points on the bezier curve! */
+}
+.entries {
+float: left;
+display: flex;
+color: white;
+overflow: hidden;
+border-radius: 3px;
+height: 20px;
+z-index 1;
+transition: 0.5s;
+}
+.jpentries {
+float: left;
+color: white;
+overflow: hidden;
+border-radius: 3px;
+height: 100%;
+z-index 1;
+font-size: small;
+flex-shrink: 0;
+}
+#entry1 {
+background-image: linear-gradient(45deg, rgba(99, 99, 87, 0.3), rgba(99, 99, 87, 0.8)); /* Light Green done */
+width: 99.4%;
+min-width: 99.4%;
+}
+#entry2 {
+background-image: linear-gradient(45deg, rgba(191, 26, 47, 0.3), rgba(191, 26, 47, 0.8)); /* Green done */
+width: .1%;
+min-width: .1%;
+}
+#entry3 {
+background-image: linear-gradient(45deg, rgba(219, 76, 64, 0.3), rgba(219, 76, 64, 0.8)); /* Blue */
+width:.1%;
+min-width: .1%;
+}
+#entry4 {
+background-image: linear-gradient(45deg, rgba(98, 70, 107, 0.3), rgba(98, 70, 107, 0.8)); /* Purple */
+width:.1%;
+min-width: .1%;
+}
+#entry5 {
+background-image: linear-gradient(45deg, rgba(0, 110, 144, 0.3), rgba(0, 110, 144, 0.8)); /* Orange */
+width:.1%;
+min-width: .1%;
+}
+#entry6 {
+background-image: linear-gradient(45deg, rgba(72, 114, 43, 0.3), rgba(72, 114, 43, 0.8)); /* Red done */
+width:.1%;
+min-width: .1%;
+}
+#entry7 {
+background-image: linear-gradient(45deg, rgba(144, 193, 63, 0.3), rgba(144, 193, 63, 0.8)); /* Black done */
+width:0.1%;
+min-width: 0.1%;
+}
+#reeltick {
+width: 1px;
+height: 100%;
+position: absolute;
+background: #fff;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+z-index: 5;
+}
+#lastunboxicon {
+  width: 64px;
+  padding: 10px;
+}
+.lastunbox {
+background-image: linear-gradient(135deg, rgba(48, 48, 54, 0.95), rgba(48, 48, 54, 1));
+}
+#lastunboxingwrapper {
+padding: 10px;
+text-align: center;
+background-image: url('../sprites/sprites/background-test.png');
+}
+#settingslink {
+float: right;
+}
+#navwrapper:hover {
+cursor: pointer;
+}
+#unboxingfooter {
+position: relative;
+}
+#casebuttonswrapper {
+position: relative;
+text-align: center;
+background-color: #303036;
+padding: 20px;
+}
+#casebuybutton {
+color: white;
+display: inline-block;
+width:auto;
+transition: 0.5s;
+}
+#casebuybutton:hover {
+text-shadow: 1px 1px 10px #DDDDDD, -1px -1px 10px #DDDDDD, 1px 1px 10px #DDDDDD, -1px -1px 10px #DDDDDD;
+cursor: pointer;
+}
+#caseopenbutton {
+color: white;
+display: inline-block;
+width: auto;
+transition: 0.5s;
+}
+#caseopenbutton:hover {
+text-shadow: 1px 1px 10px #DDDDDD, -1px -1px 10px #DDDDDD, 1px 1px 10px #DDDDDD, -1px -1px 10px #DDDDDD;
+cursor: pointer;
+}
+#casebuybuttonwrapper {
+display: inline-block;
+width:auto;
+}
+#caseopenbuttonwrapper {
+display: inline-block;
+width: auto;
+margin-right: 20px;
+}
+.casebuttons {
+border: 1px solid green;
+background-color: #5BB864;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 5px;
+padding-bottom: 5px;
+width: 100%;
+text-align: center;
+border-radius: 4px;
+}
+#moneyamount {
+display: inline-block;
+color: white;
+float: right;
+padding-right: 10px;
+}
+#topbarprofilewrapper {
+display: inline-block;
+color: white;
+float: right;
+padding-right: 10px;
+}
+#boxes {
+text-align: center;
+height: 100%;
+}
+.boxicons {
+width: 96px;
+transition: 0.75s;
+}
+.boxiconwrapper {
+margin: 10px;
+}
+.boxicons:hover {
+cursor: pointer;
+}
+#lastunboxname {
+font-size: small;
+color: #BDBBB0;
+}
+#lastunboxflavortext {
+font-size: x-small;
+font-style: italic;
+color: #BDBBB0;
+}
+#casename {
+color: #BDBBB0;
+}
+.inventorymain {
+text-align: center;
+height: 85%;
+overflow-y: scroll;
+overflow-x: hidden;
+}
+.inventorycontainer {
+float: right;
+width: 30%;
+background-color: #28282D;
+height: 100%;
+}
+.inventoryheader {
+border: 1px solid #121212;
+background-color: #303036;
+color: white;
+height: 4%;
+font-size: 9px;
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content: space-between;
+padding: 0.4%;
+}
+#inventoryslotsfilledcount {
+display: flex;
+}
+#inventory {
+text-align: center;
+width: 100%;
+}
+.inventoryslots {
+padding: 5px;
+position: relative;
+color: white;
+}
+
+#getmoneybutton {
+color: white;
+float: right;
+background-color: #0C4712;
+transition: 0.5s;
+}
+#getmoneybutton:hover {
+cursor: pointer;
+background-color: #0E5615;
+}
+.itempriceoverlay {
+position: absolute;
+left:0;
+bottom:0;
+font-size: x-small;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #303036;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1F1F23;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1F1F23;
+}
+.inventoryfooter {
+height: 10%;
+background-color: #28282D;
+}
+.homedata {
+color: #3D3D3D;
+font-size: small;
+}
+.homeheader {
+color: #636363;
+font-size: large;
+}
+a:link, a:visited {
+  color: #636363;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.jpheaderstuff {
+text-align: center;
+}
+#lastjpwinnerwrapper {
+text-align: center;
+}
+.individualjpentry {
+  color: white;
+  text-size: small;
+  padding: 5px 10px 5px 10px;
+}
+#individualjpentry0 {
+border-left: 3px solid rgb(153, 6, 6); /* red */
+background-image: linear-gradient(20deg, rgba(153, 6, 6, 0.5), rgba(153, 6, 6, 1));
+}
+#jpentry0 {
+background-image: linear-gradient(20deg, rgba(153, 6, 6, 0.5), rgba(153, 6, 6, 1));
+}
+#individualjpentry1 {
+border-left: 3px solid rgb(153, 92, 6); /* orange */
+background-image: linear-gradient(20deg, rgba(153, 92, 6, 0.5), rgba(153, 92, 6, 1));
+}
+#jpentry1 {
+background-image: linear-gradient(20deg, rgba(153, 92, 6, 0.5), rgba(153, 92, 6, 1));
+}
+#individualjpentry2 {
+border-left: 3px solid rgb(151, 153, 6); /* gold */
+background-image: linear-gradient(20deg, rgba(151, 153, 6, 0.5), rgba(151, 153, 6, 1));
+}
+#jpentry2 {
+background-image: linear-gradient(20deg, rgba(151, 153, 6, 0.5), rgba(151, 153, 6, 1));
+}
+#individualjpentry3 {
+border-left: 3px solid rgb(31, 153, 6); /* green */
+background-image: linear-gradient(20deg, rgba(31, 153, 6, 0.5), rgba(31, 153, 6, 1));
+}
+#jpentry3 {
+background-image: linear-gradient(20deg, rgba(31, 153, 6, 0.5), rgba(31, 153, 6, 1));
+}
+#individualjpentry4 {
+border-left: 3px solid rgb(6, 153, 48); /* teal */
+background-image: linear-gradient(20deg, rgba(6, 153, 48, 0.5), rgba(6, 153, 48, 1));
+}
+#jpentry4 {
+background-image: linear-gradient(20deg, rgba(6, 153, 48, 0.5), rgba(6, 153, 48, 1));
+}
+#individualjpentry5 {
+border-left: 3px solid rgb(6, 80, 153); /* blue */
+background-image: linear-gradient(20deg, rgba(6, 80, 153, 0.5), rgba(6, 80, 153, 1));
+}
+#jpentry5 {
+background-image: linear-gradient(20deg, rgba(6, 80, 153, 0.5), rgba(6, 80, 153, 1));
+}
+#individualjpentry6 {
+border-left: 3px solid rgb(58, 6, 153); /* purple */
+background-image: linear-gradient(20deg, rgba(58, 6, 153, 0.5), rgba(58, 6, 153, 1));
+}
+#jpentry6 {
+background-image: linear-gradient(20deg, rgba(58, 6, 153, 0.5), rgba(58, 6, 153, 1));
+}
+#individualjpentry7 {
+border-left: 3px solid rgb(104, 6, 153); /* violet */
+background-image: linear-gradient(20deg, rgba(104, 6, 153, 0.5), rgba(104, 6, 153, 1));
+}
+#jpentry7 {
+background-image: linear-gradient(20deg, rgba(104, 6, 153, 0.5), rgba(104, 6, 153, 1));
+}
+#individualjpentry8 {
+border-left: 3px solid rgb(153, 6, 104); /* fuschia */
+background-image: linear-gradient(20deg, rgba(153, 6, 104, 0.5), rgba(153, 6, 104, 1));
+}
+#jpentry8 {
+background-image: linear-gradient(20deg, rgba(153, 6, 104, 0.5), rgba(153, 6, 104, 1));
+}
+.homealert {
+  color: #b5b333;
+}
+#inventoryselling:hover {
+  cursor: pointer;
+}
+#inventorysorting {
+
+}
+#inventorysortlh:hover {
+  cursor: pointer;
+}
+#inventorysorthl:hover {
+  cursor: pointer;
+}
+.settingsoptions {
+width: 98%;
+border: 1px solid #1F1F1F;
+border-radius: 5px;
+display: flex;
+padding: 1%;
+justify-content: space-between;
+transition: 0.5s;
+}
+.settingsoptions:hover {
+background-image: linear-gradient(90deg, rgba(169, 68, 0, 1), rgba(169, 68, 0, 0));
+}
+.tradeupslots {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 90px;
+  width: 90px;
+  background-image: linear-gradient(135deg, rgba(34, 34, 34, 1), rgba(34, 34, 34, 0.5));
+  position: relative;
+  transition: 1.75s;
+}
+
+.tradeupslotinfos {
+position: absolute;
+top: 0;
+left: 0;
+font-size: x-small;
+}
+.statcontainers {
+margin-left: 10px;
+font-size: 10px;
+border-bottom: 1px solid #191919;
+padding-top: 5px;
+}
+.messagetitle {
+font-style: bold;
+}
+.messagecontent {
+font-size: small;
+font-style: italic;
+margin-left: 5px;
+}
+.tooltips {
+  visibility: hidden;
+  width: 200px;
+  background-color: #1E1E24;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px 0;
+
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+  font-size: small;
+}
+.achievements:hover .tooltips {
+  visibility: visible;
+  cursor: pointer;
+}
+.achievements:hover {
+  cursor: pointer;
+}
+.achievements {
+  position: relative;
+}
+.questcancelbutton {
+  background-color: #7D0000;
+  transition: 0.25s;
+}
+.questcancelbutton:hover {
+  cursor: pointer;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  top: 50%;
+  animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+
+  25% {
+    height: 0%;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0%;
+  }
+}
+.profileshowcaseitems {
+display: inline-block;
+width: 90px;
+height: 90px;
+border: 1px solid black;
+margin: 3px;
+border-radius: 2px;
+position: relative;
+}
+.profileshowcaseitems:hover {
+cursor: pointer;
+}
