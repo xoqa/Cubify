@@ -78,8 +78,5 @@ function resetallbotitems() {
 }
 // Bot Declarations
 //elite
-cliffe = new Bot('fair', 'Gray (&beta;)', "Elite")
-crusher = new Bot('fair', 'Jaden (&beta;)', "Elite")
-jackson = new Bot('fair', 'sdoma (&beta;)', "Elite")
-breach = new Bot('lowballer', 'woqa (&beta;)', "Elite")
+cliffe = new Bot('fair', '1v1Bot (&beta;)', "Elite")
 
