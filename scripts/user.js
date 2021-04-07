@@ -20,7 +20,7 @@ if (user.exp == undefined) {user.exp = 0;}
 		user.stats.tradeups = 0
 	}
 	if (user.maxinventory == undefined) {user.maxinventory = 25000;}
-	if (user.spinspeed == undefined) {user.spinspeed = 2;}
+	if (user.spinspeed == undefined) {user.spinspeed = 6;}
 	if (user.mpcvariation == undefined) {user.mpcvariation = 25;}
 	if (user.achievements == undefined) {user.achievements = []}
 	if (user.foundcubes == undefined) {user.foundcubes = []}
