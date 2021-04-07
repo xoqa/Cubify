@@ -81,5 +81,5 @@ function resetallbotitems() {
 cliffe = new Bot('fair', 'Gray (&beta;)', "Elite")
 crusher = new Bot('fair', 'Jaden (&beta;)', "Elite")
 jackson = new Bot('fair', 'sdoma (&beta;)', "Elite")
-breach = new Bot('lowball', 'woqa (&beta;)', "Elite")
+breach = new Bot('lowballer', 'woqa (&beta;)', "Elite")
 
