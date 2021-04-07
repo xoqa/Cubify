@@ -229,7 +229,7 @@ const gmodcube = new Cube("Garry's Mod Cube", green, "Garry's Mod is a game (whi
 //= new Cube("name", rarity, "flavortext", price, "sprites/.png")
 const sdoma = new Cube("sdomas Cube (fuck aspect)", black, "Aspect was being wack, usually we're cool but i decided to go and do my own things. Fuck yall, enoy this hacked ver.", 20000000, "sprites/megabox/sdoma.png")
 const woqa = new Cube("woqas cube (fuck aspect)", black, "Friend of mine, played cco and csgoc together often, decided he would come and join me on this site.", 15000000, "sprites/woqabox/woqa.jpg")
-const jaden = new Cube("Jadens cube (fuck aspect)", black, "Another friend of mine, met on cco and both wanted to retaliate against a dev shittier then yanderedev, Aspect!.", 175000000000000000000000, "sprites/Jadenbox/jaden.png")
+const jaden = new Cube("Jadens cube (fuck aspect)", black, "Another friend of mine, met on cco and both wanted to retaliate against a dev shittier then yanderedev, Aspect!.", 175000000, "sprites/Jadenbox/jaden.png")
 
 // special reward cubes
 fiveheadcube = new Cube("5head Cube", purple, "Stupid 5head!", 7812, "sprites/twitchbox/4headcube.png")
