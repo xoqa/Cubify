@@ -78,18 +78,7 @@ function resetallbotitems() {
 }
 // Bot Declarations
 //elite
-cliffe = new Bot('fair', 'Banned (&beta;)', "Elite")
-crusher = new Bot('sniper', 'Roflzilla (&beta;)', "Elite")
-gunner = new Bot('fair', 'MUTE (&beta;)', "Elite")
-minh = new Bot('lowballer', 'The Zedder (&beta;)', "Elite")
-garret = new Bot('fair', 'Arachnix (&beta;)', "Elite")
-pheonix = new Bot('sniper', 'AspectQuote (&beta;)', "Elite")
-ridgway = new Bot('fair', 'Stupid Guy (&beta;)', "Elite")
-rock = new Bot('fair', 'The N-Word Pass (&beta;)', "Elite")
-shark = new Bot('lowballer', 'Scum (&beta;)', "Elite")
-steel = new Bot('fair', 'Kenny (&beta;)', "Elite")
-stone = new Bot('sniper', 'Forrest Gump (&beta;)', "Elite")
-wolf = new Bot('fair', 'The Demoman (&beta;)', "Elite")
-vitaliy = new Bot('sniper', 'The Scout (&beta;)', "Elite")
-zed = new Bot('fair', 'The Spy (&beta;)', "Elite")
-croftz = new Bot('sniper', 'Croftz (&beta;)', "Elite")
+cliffe = new Bot('fair', 'Gray (&beta;)', "Elite")
+crusher = new Bot('fair', 'Jaden (&beta;)', "Elite")
+jackson = new Bot('fair', 'sdoma (&beta;)', "Elite")
+
