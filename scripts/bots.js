@@ -78,5 +78,5 @@ function resetallbotitems() {
 }
 // Bot Declarations
 //elite
-cliffe = new Bot('fair', '1v1Bot (&beta;)', "Elite")
+cliffe = new Bot('fair', '1v1Bot (&beta;)', "normal")
 
