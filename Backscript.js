@@ -1,2 +1,3 @@
-
-exitButton.onclick = function() {window.close()}
+(function exit() {
+  window.close();
+ )}
